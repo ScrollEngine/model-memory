@@ -1,0 +1,26 @@
+{
+  "name": "scroll-model-memory",
+  "version": "1.0.0-alpha",
+  "description": "Scroll Server memory store model layer.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:ScrollServer/model-memory.git"
+  },
+  "keywords": [
+    "scroll",
+    "memory",
+    "model"
+  ],
+  "author": "Scroll Team",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/ScrollServer/model-memory/issues"
+  },
+  "homepage": "https://github.com/ScrollServer/model-memory",
+  "dependencies": {
+    "node-uuid": "^1.4.1",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {}
+}
