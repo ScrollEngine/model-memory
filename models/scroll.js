@@ -20,7 +20,8 @@ module.exports = function(data) {
   };
 
   /**
-   * Gets a collection of scrolls.
+   * Gets a collection of scrolls. The results are cloned to prevent direct
+   * modification of the items stored in the memory.
    * @param query {object} - A key/value filter for the data.
    * @param options {object} - Various options to take into account when
    * returning the data.
@@ -57,9 +58,9 @@ module.exports = function(data) {
         }
       }
 
-      callback(null, items);
+      callback(null, _.cloneDeep(items));
     } else {
-      options(null, _.where(data.scrolls, query));
+      options(null, _.cloneDeep(_.where(data.scrolls, query)));
     }
   };
 
