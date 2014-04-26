@@ -1,11 +1,15 @@
-# Scroll Server Memory Store
+# Scroll Memory Model Layer
 
 ***WARNING*** - This model layer is meant only for local testing. This **WILL** break production in any number of ways if used.
 
-A Scroll Server model layer that stores all data in a simple JavaScript object, IE in memory. It works great for local testing since you don't need any sort of database to connect to.
+A Scroll Engine model layer that stores all data in a simple JavaScript object, IE in memory. It works great for local testing since you don't need any sort of database to connect to. This model layer also has **zero** contraits, so it is good for developing custom models for your scroll application as you can modify the data structure on the fly.
 
-You can omit the `connection` configuration option, or you can use it to pass a directory path that will be searched for JSON files to load. This allows you to seed your data. Only the root directory is searched and the following files are supported.
+## Connect String
 
-* *scrolls.json*
+You can omit the `connection` configuration option, or you can provide an absolute path that will be searched for JSON files to load. This allows you to seed your data. The following files will be searched for and used to seed the corresponding data:
 
-If the option is ommited, an empty data set is used.
+* *scroll.json*
+
+If the option is ommited, an empty data set is used. Also note that only the root directory is searched.
+
+http://www.json-generator.com/ is a great resource to generate JSON data, if you do end up wanting to seed your data.

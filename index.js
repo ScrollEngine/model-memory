@@ -1,6 +1,7 @@
 var fs = require('fs'),
-    data = {
-      scrolls: []
+    Model = require('./lib/model'),
+    models = {
+      scroll: new Model()
     };
 
 // return the connect function and models
@@ -17,9 +18,9 @@ module.exports = {
    */
   connect: function(connectionString, connected, error) {
     if(connectionString.length > 0) {
-      for(var m in data) {
+      for(var m in models) {
         if(fs.existsSync(connectionString + m + '.json')) {
-          data[m] = require(connectionString + m + '.json');
+          models[m].data = require(connectionString + m + '.json');
         }
       }
     }
@@ -27,8 +28,6 @@ module.exports = {
     connected();
   },
 
-  // load the models
-  models: {
-    scroll: require('./models/scroll')(data)
-  }
+  // pass along the models
+  models: models
 };
