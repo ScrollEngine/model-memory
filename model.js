@@ -1,8 +1,23 @@
 var fs = require('fs'),
     Model = require('./lib/model'),
-    models = {
-      scroll: new Model()
-    };
+    dataDir = '';
+    models = {};
+
+models.scroll = new Model(models);
+
+/**
+ * Loads in a JSON file of data.
+ * @private
+ * @param name {string} - The name of the file to search for.
+ * @returns a JSON object or null if the file was not found.
+ */
+var getData = function(name) {
+  if(dataDir.length > 0 && fs.existsSync(dataDir + name + '.json')) {
+    return require(dataDir + name + '.json');
+  }
+
+  return [];
+};
 
 // return the connect function and models
 module.exports = {
@@ -17,17 +32,27 @@ module.exports = {
    * connection error has occured.
    */
   connect: function(connectionString, connected, error) {
-    if(connectionString.length > 0) {
-      for(var m in models) {
-        if(fs.existsSync(connectionString + m + '.json')) {
-          models[m].data = require(connectionString + m + '.json');
-        }
-      }
+    dataDir = connectionString;
+
+    for(var m in models) {
+      models[m].data = getData(m);
     }
 
     connected();
   },
 
   // pass along the models
-  models: models
+  models: models,
+
+  /**
+   * Loads a new model.
+   * @parma name {string} - the name to give the model
+   * @param model {function(models, context)} - The initialization function
+   * to run.
+   **/
+  load: function(name, model) {
+    models[name] = model(models, {
+      Model: Model
+    });
+  }
 };
