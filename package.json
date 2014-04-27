@@ -2,7 +2,7 @@
   "name": "scroll-model-memory",
   "version": "0.1.0-alpha",
   "description": "Scroll Server memory store model layer.",
-  "main": "index.js",
+  "main": "model.js",
   "repository": {
     "type": "git",
     "url": "git://github.com:ScrollServer/model-memory.git"
