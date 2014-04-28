@@ -1,4 +1,4 @@
-# Scroll Memory Model Layer
+# Scroll Memory Model Layer ![Scroll Official Module](http://img.shields.io/badge/scroll-official-green.svg?style=flat)
 
 ***WARNING*** - This model layer is meant only for local testing. This **WILL** break production in any number of ways if used.
 
