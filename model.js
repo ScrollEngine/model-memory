@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    path = require('path'),
     Model = require('./lib/model'),
     dataDir = '';
     models = {};
@@ -32,8 +33,14 @@ module.exports = {
    * connection error has occured.
    */
   connect: function(connectionString, connected, error) {
-    dataDir = connectionString;
+    // define the data directory for test data
+    if(typeof connectionString === 'string') {
+      dataDir = path.resolve(connectionString);
+    }
 
+    dataDir += '/';
+
+    // load the defined models
     for(var m in models) {
       models[m].data = getData(m);
     }
