@@ -33,6 +33,10 @@ module.exports = {
    * connection error has occured.
    */
   connect: function(connectionString, connected, error) {
+    this.log.warning(
+      'Please note the memory model layer should NOT ' +
+      'be used in a production environment.');
+
     // define the data directory for test data
     if(typeof connectionString === 'string') {
       dataDir = path.resolve(connectionString);
