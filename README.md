@@ -13,3 +13,7 @@ You can omit the `connection` configuration option, or you can provide an absolu
 If the option is ommited, an empty data set is used. Also note that only the root directory is searched.
 
 http://www.json-generator.com/ is a great resource to generate JSON data, if you do end up wanting to seed your data.
+
+## Queries
+
+ MongoDB-style queries are avaiable via the [Sift](https://github.com/crcn/sift.js) library.
